@@ -1,12 +1,13 @@
 Name:           perl-Authen-SASL
 Version:        2.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        SASL Authentication framework for Perl
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Authen-SASL/
 Source0:        http://www.cpan.org/authors/id/G/GB/GBARR/Authen-SASL-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch0:         perl-Authen-SASL-Fix_BZ_965739.patch
 BuildArch:      noarch
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Digest::HMAC)
@@ -21,6 +22,7 @@ protocols should be able to share.
 
 %prep
 %setup -q -n Authen-SASL-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -49,6 +51,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 
 %changelog
+* Thu Apr 03 2014 Jitka Plesnikova <jplesnik@redhat.com> - 2.13-3
+- Fixed SASL and GSSAPI error
+- Resolves: rhbz#965739
+
 * Mon Dec  7 2009 Stepan Kasal <skasal@redhat.com> - 2.13-2
 - rebuild against perl 5.10.1
 
@@ -90,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Apr 26 2005 Jose Pedro Oliveira <jpo at di.uminho.pt> - 2.09-2
 - Update to 2.09.
 
-* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+* Fri Apr  8 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
 - rebuilt
 
 * Mon Apr  4 2005 Ville Skyttä <ville.skytta at iki.fi> - 2.08-1
