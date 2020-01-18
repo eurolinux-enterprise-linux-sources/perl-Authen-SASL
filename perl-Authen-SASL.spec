@@ -1,6 +1,6 @@
 Name:           perl-Authen-SASL
 Version:        2.15
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        SASL Authentication framework for Perl
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -55,6 +55,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.15-9
+- Mass rebuild 2013-12-27
+
 * Tue Nov 06 2012 Jitka Plesnikova <jplesnik@redhat.com> - 2.15-8
 - Specify all dependencies
 - Use DESTDIR rather than PERL_INSTALL_ROOT
