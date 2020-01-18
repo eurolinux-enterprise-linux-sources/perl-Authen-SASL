@@ -1,15 +1,12 @@
 Name:           perl-Authen-SASL
 Version:        2.15
-Release:        10%{?dist}
+Release:        8%{?dist}
 Summary:        SASL Authentication framework for Perl
 License:        GPL+ or Artistic
 Group:          Development/Libraries
 URL:            http://search.cpan.org/dist/Authen-SASL/
 Source0:        http://www.cpan.org/authors/id/G/GB/GBARR/Authen-SASL-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-# Update the function WRITE to properly handle string which is shorter than
-# provided length, bug #1084010, CPAN RT#85294
-Patch0:         Authen-SASL-RT85294-Fix-WRITE.patch
 BuildArch:      noarch
 BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Carp)
@@ -28,7 +25,6 @@ protocols should be able to share.
 
 %prep
 %setup -q -n Authen-SASL-%{version}
-%patch0 -p1
 
 chmod a-x example_pl
 
@@ -59,12 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 
 %changelog
-* Tue Aug 05 2014 Petr Pisar <ppisar@redhat.com> - 2.15-10
-- Fix SASL and GSSAPI error (bug #1084010)
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.15-9
-- Mass rebuild 2013-12-27
-
 * Tue Nov 06 2012 Jitka Plesnikova <jplesnik@redhat.com> - 2.15-8
 - Specify all dependencies
 - Use DESTDIR rather than PERL_INSTALL_ROOT
@@ -135,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Apr 26 2005 Jose Pedro Oliveira <jpo at di.uminho.pt> - 2.09-2
 - Update to 2.09.
 
-* Fri Apr  8 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
+* Fri Apr  7 2005 Michael Schwendt <mschwendt[AT]users.sf.net>
 - rebuilt
 
 * Mon Apr  4 2005 Ville Skyttä <ville.skytta at iki.fi> - 2.08-1
